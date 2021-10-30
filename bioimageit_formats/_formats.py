@@ -97,9 +97,9 @@ class Formats:
                     for format_ in tmp['formats']:
                         format_data = Format()
                         format_data.name = format_['name']
-                        format_data.name = format_['extension']
-                        format_data.name = format_['reader']
-                        format_data.name = format_['viewer']
+                        format_data.extension = format_['extension']
+                        format_data.reader = format_['reader']
+                        format_data.viewer = format_['viewer']
                         self.formats.append(format_data)
                         self.formats_names.append(format_data.name)
                 else:
@@ -154,7 +154,7 @@ class Formats:
 
         """
         for format_ in self.formats:
-            if format_['name'] == name:
+            if format_.name == name:
                 return format_
         else:
             raise FormatKeyNotFoundError('No key ' + name +

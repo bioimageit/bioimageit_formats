@@ -47,18 +47,17 @@ class MovietxtReaderService(FormatReader):
 
     @staticmethod
     def files(filename):
+        dir_ = os.path.dirname(filename)
         filenames = [filename]
         with open(filename, 'r') as file_content:
             for line in file_content:
-                filenames.append(line.strip())
+                filenames.append(os.path.join(dir_, line.strip()))
         return filenames
 
     @staticmethod
     def read(filename):
-        dir_ = os.path.dirname(filename)
         files = MovietxtReaderService.files(filename)
         frames = []
         for file in files:
-            frames.append(imread(os.path.join(dir_, file)))
-
+            frames.append(imread(file))
         return np.stack(frames)
