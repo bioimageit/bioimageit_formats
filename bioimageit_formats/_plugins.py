@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 import numpy as np
 from skimage.io import imread
 from ._reader import FormatReader
@@ -59,5 +60,78 @@ class MovietxtReaderService(FormatReader):
         files = MovietxtReaderService.files(filename)
         frames = []
         for file in files:
-            frames.append(imread(file))
+            if file != filename:
+                frames.append(imread(file))
         return np.stack(frames)
+
+
+class TableCSVServiceBuilder:
+    """Service builder for the tablecsv reader"""
+
+    def __init__(self):
+        self._instance = None
+
+    def __call__(self, **_ignored):
+        if not self._instance:
+            self._instance = TableCSVReaderService()
+        return self._instance
+
+
+class TableCSVReaderService(FormatReader):
+    """Reader for Tiff images
+
+    """
+    def __init__(self):
+        super().__init__()
+
+    @staticmethod
+    def read(filename):
+        return pd.read_csv(filename)
+
+
+class ArrayCSVServiceBuilder:
+    """Service builder for the arraycsv reader"""
+
+    def __init__(self):
+        self._instance = None
+
+    def __call__(self, **_ignored):
+        if not self._instance:
+            self._instance = ArrayCSVReaderService()
+        return self._instance
+
+
+class ArrayCSVReaderService(FormatReader):
+    """Reader for Tiff images
+
+    """
+    def __init__(self):
+        super().__init__()
+
+    @staticmethod
+    def read(filename):
+        return pd.read_csv(filename, nrows=1)
+
+
+class NumberCSVServiceBuilder:
+    """Service builder for the numbercsv reader"""
+
+    def __init__(self):
+        self._instance = None
+
+    def __call__(self, **_ignored):
+        if not self._instance:
+            self._instance = NumberCSVReaderService()
+        return self._instance
+
+
+class NumberCSVReaderService(FormatReader):
+    """Reader for Tiff images
+
+    """
+    def __init__(self):
+        super().__init__()
+
+    @staticmethod
+    def read(filename):
+        return pd.read_csv(filename, nrows=1)        

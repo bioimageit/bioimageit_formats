@@ -8,7 +8,9 @@ Classes
 RunnerServiceProvider
 
 """
-from ._plugins import ImagetiffServiceBuilder, MovietxtServiceBuilder
+from ._plugins import (ImagetiffServiceBuilder, MovietxtServiceBuilder, 
+                       TableCSVServiceBuilder, ArrayCSVServiceBuilder,
+                       NumberCSVServiceBuilder)
 
 
 class ObjectFactory:
@@ -41,3 +43,6 @@ class FormatsReaderServiceProvider(ObjectFactory):
 formatsServices = FormatsReaderServiceProvider()
 formatsServices.register_builder('imagetiff', ImagetiffServiceBuilder())
 formatsServices.register_builder('movietxt', MovietxtServiceBuilder())
+formatsServices.register_builder('tablecsv', TableCSVServiceBuilder())
+formatsServices.register_builder('arraycsv', ArrayCSVServiceBuilder())
+formatsServices.register_builder('numbercsv', NumberCSVServiceBuilder())
