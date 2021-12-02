@@ -8,9 +8,10 @@ Classes
 RunnerServiceProvider
 
 """
-from ._plugins import (ImagetiffServiceBuilder, MovietxtServiceBuilder, 
-                       TableCSVServiceBuilder, ArrayCSVServiceBuilder,
-                       NumberCSVServiceBuilder)
+from ._plugins._csv import (TableCSVServiceBuilder, ArrayCSVServiceBuilder, NumberCSVServiceBuilder)
+from ._plugins._imagetiff import ImagetiffServiceBuilder
+from ._plugins._movietxt import MovietxtServiceBuilder
+from ._plugins._trackmate import TrackmateModelServiceBuilder
 
 
 class ObjectFactory:
@@ -46,3 +47,4 @@ formatsServices.register_builder('movietxt', MovietxtServiceBuilder())
 formatsServices.register_builder('tablecsv', TableCSVServiceBuilder())
 formatsServices.register_builder('arraycsv', ArrayCSVServiceBuilder())
 formatsServices.register_builder('numbercsv', NumberCSVServiceBuilder())
+formatsServices.register_builder('trackmatemodel', TrackmateModelServiceBuilder())
