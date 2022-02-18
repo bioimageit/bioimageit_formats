@@ -33,6 +33,12 @@ class FormatKeyNotFoundError(Exception):
     pass
 
 
+class FormatDatabaseError(Exception):
+    """Raised when key is not found in the config"""
+
+    pass
+
+
 class Format:
     """Container for a data format information
 
@@ -179,7 +185,10 @@ class FormatsAccess:
 
     def __init__(self, formats_file: str):
         """ Virtually private constructor. """
-        FormatsAccess.__instance = Formats(formats_file)
+        if os.path.exists(formats_file):
+            FormatsAccess.__instance = Formats(formats_file)
+        else:
+            raise FormatDatabaseError(f'The format database file {formats_file} cannot be not found')    
 
     @staticmethod
     def instance():
