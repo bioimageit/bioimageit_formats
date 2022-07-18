@@ -10,6 +10,7 @@ RunnerServiceProvider
 """
 from ._plugins._csv import (TableCSVServiceBuilder, ArrayCSVServiceBuilder, NumberCSVServiceBuilder)
 from ._plugins._imagetiff import ImagetiffServiceBuilder
+from ._plugins._imagezarr import ImagezarrServiceBuilder
 from ._plugins._movietxt import MovietxtServiceBuilder
 from ._plugins._trackmate import TrackmateModelServiceBuilder
 
@@ -43,6 +44,7 @@ class FormatsReaderServiceProvider(ObjectFactory):
 
 formatsServices = FormatsReaderServiceProvider()
 formatsServices.register_builder('imagetiff', ImagetiffServiceBuilder())
+formatsServices.register_builder('imagezarr', ImagezarrServiceBuilder())
 formatsServices.register_builder('movietxt', MovietxtServiceBuilder())
 formatsServices.register_builder('tablecsv', TableCSVServiceBuilder())
 formatsServices.register_builder('arraycsv', ArrayCSVServiceBuilder())
