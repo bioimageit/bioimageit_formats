@@ -22,6 +22,7 @@ setuptools.setup(
     install_requires=[
         "numpy",
         "pandas",
-        "scikit-image>=0.18.3"
+        "scikit-image>=0.18.3",
+        "zarr>=2.12.0"
     ],
 )
