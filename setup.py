@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bioimageit_formats",
-    version="0.1.3",
+    version="0.2.0",
     author="Sylvain Prigent and BioImageIT team",
     author_email="bioimageit@gmail.com",
     description="Manage data formats for BioImageIT project",
